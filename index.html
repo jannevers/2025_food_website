@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mein Foodblog</title>
+    <title>Food Website</title>
     <link rel="stylesheet" href="css-styles/main-style.css">
     <link rel="stylesheet" href="css-styles/recipe.css">
 </head>
@@ -32,90 +32,25 @@
         </div>
     </header>
 
-    <div class="recipes-container">
-        <div class="recipe">
-            <div class="image-container">
-                <img src="recipe-images/foodiesfeed.com_sushi-roll-macro.jpg" alt="Rezept 1 Bild">
-            </div>
-            <div class="text-container">
-                <h2>Sushi Rolls</h2>
-            </div>
-        </div>
-        <div class="recipe">
-            <div class="image-container">
-                <img src="recipe-images/foodiesfeed.com_pizza-salami-close-up.jpg" alt="Rezept 1 Bild">
-            </div>
-            <div class="text-container">
-                <h2>Pizza</h2>
-            </div>
-        </div>
-        <div class="recipe">
-            <div class="image-container">
-                <img src="recipe-images/foodiesfeed.com_tacos-on-a-wooden-plate.jpg" alt="Rezept 1 Bild">
-            </div>
-            <div class="text-container">
-                <h2>Tacos</h2>
-            </div>
-        </div>
-        <div class="recipe">
-            <div class="image-container">
-                <img src="recipe-images/foodiesfeed.com_xiaolongbao-dumplings.jpg" alt="Rezept 1 Bild">
-            </div>
-            <div class="text-container">
-                <h2>Xiaolongbao Dumplings</h2>
-            </div>
-        </div>
-        <div class="recipe">
-            <div class="image-container">
-                <img src="recipe-images/foodiesfeed.com_best-burger-in-town.jpg" alt="Rezept 1 Bild">
-            </div>
-            <div class="text-container">
-                <h2>Burger</h2>
-            </div>
-        </div>
-        <div class="recipe">
-            <div class="image-container">
-                <img src="recipe-images/foodiesfeed.com_sushi-roll-macro.jpg" alt="Rezept 1 Bild">
-            </div>
-            <div class="text-container">
-                <h2>Sushi Rolls</h2>
-            </div>
-        </div>
-        <div class="recipe">
-            <div class="image-container">
-                <img src="recipe-images/foodiesfeed.com_pizza-salami-close-up.jpg" alt="Rezept 1 Bild">
-            </div>
-            <div class="text-container">
-                <h2>Pizza</h2>
-            </div>
-        </div>
-        <div class="recipe">
-            <div class="image-container">
-                <img src="recipe-images/foodiesfeed.com_tacos-on-a-wooden-plate.jpg" alt="Rezept 1 Bild">
-            </div>
-            <div class="text-container">
-                <h2>Tacos</h2>
-            </div>
-        </div>
-        <div class="recipe">
-            <div class="image-container">
-                <img src="recipe-images/foodiesfeed.com_xiaolongbao-dumplings.jpg" alt="Rezept 1 Bild">
-            </div>
-            <div class="text-container">
-                <h2>Xiaolongbao Dumplings</h2>
-            </div>
-        </div>
-        <div class="recipe">
-            <div class="image-container">
-                <img src="recipe-images/foodiesfeed.com_best-burger-in-town.jpg" alt="Rezept 1 Bild">
-            </div>
-            <div class="text-container">
-                <h2>Burger</h2>
-            </div>
-        </div>
-    </div>
+    <main>
+        <div id="recipes-container"></div>
+    </main>
 
-    <script src="script.js"></script>
-
-    </body>
+    <script>
+        // JavaScript to load the recipes.html content
+        fetch('src/recipes.html')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.text();
+            })
+            .then(data => {
+                document.getElementById('recipes-container').innerHTML = data;
+            })
+            .catch(error => {
+                console.error('There was a problem with the fetch operation:', error);
+            });
+    </script>
+</body>
 </html>
