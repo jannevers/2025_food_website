@@ -7,15 +7,15 @@
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    max-width: 250px; /* Maximale Breite des Containers */
-    margin: 10px auto; /* Verkleinerter Margin */
+    max-width: 11em;
+    margin: 0.2em; /* Verkleinerter Margin in em */
     text-align: center;
-    padding: 10px;
+    padding: 0.2em; /* Padding in em */
     /* border: 1px solid #ddd;
     border-radius: 8px;
     background: #fff; */
     /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); */
-    height: 320px; /* Feste Höhe für den Container */
+    height: 15em; /* Feste Höhe für den Container in em */
     overflow: hidden; /* Verhindert, dass Inhalte überlaufen */
 }
 
@@ -31,7 +31,7 @@
     max-width: 100%; /* Verhindert, dass das Bild größer als der Container wird */
     height: auto; /* Beibehaltung des Seitenverhältnisses */
     object-fit: cover; /* Bild passt sich dem Container an, ohne verzerrt zu werden */
-    border-radius: 8px; /* Optional, um abgerundete Ecken hinzuzufügen */
+    border-radius: 0.5em; /* Optional, um abgerundete Ecken hinzuzufügen */
 }
 
 /* Container für den Text */
@@ -56,5 +56,5 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 20px; /* Abstand zwischen den Rezepten */
+    gap: 0.5em; /* Abstand zwischen den Rezepten */
 }
