@@ -2,24 +2,27 @@
 
 /* Rezept-Stile */
 .recipe {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
     width: 100%;
     max-width: 250px; /* Maximale Breite des Containers */
-    margin: 20px auto;
+    margin: 10px auto; /* Verkleinerter Margin */
     text-align: center;
-    padding: 15px;
+    padding: 10px;
     /* border: 1px solid #ddd;
     border-radius: 8px;
     background: #fff; */
     /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); */
-    height: 300px; /* Feste Höhe für den Container */
+    height: 320px; /* Feste Höhe für den Container */
     overflow: hidden; /* Verhindert, dass Inhalte überlaufen */
 }
 
-/* Überschrift für das Rezept */
-.recipe h2 {
-    font-size: 1.6em;
-    color: #333;
-    margin-bottom: 15px;
+/* Container für das Bild */
+.recipe .image-container {
+    width: 100%;
+    flex-shrink: 0;
 }
 
 /* Bild-Styling */
@@ -31,6 +34,22 @@
     border-radius: 8px; /* Optional, um abgerundete Ecken hinzuzufügen */
 }
 
+/* Container für den Text */
+.recipe .text-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    width: 100%;
+}
+
+/* Überschrift für das Rezept */
+.recipe h2 {
+    font-size: 1.6em;
+    color: #333;
+    margin-bottom: 15px;
+}
 
 /* Container für alle Rezepte */
 .recipes-container {

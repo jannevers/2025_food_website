@@ -1,7 +1,10 @@
 /* Allgemeine Einstellungen */
 * {
-    margin: 0;
-    padding: 0;
+    max-width: 1200px;
+    align-items: center;    /* Zentrieren der Elemente */
+    justify-content: center; /* Vertikal in der Mitte */
+    margin: auto;
+    padding: auto;
     box-sizing: border-box;
 }
 
@@ -15,9 +18,8 @@ header {
     flex-direction: column; /* Elemente untereinander anordnen */
     align-items: center;    /* Zentrieren der Elemente */
     justify-content: center; /* Vertikal in der Mitte */
-    background-color: #f8f8f8;
     padding: 20px;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid #00000080;
 }
 
 /* Logo/Titel */
@@ -37,13 +39,13 @@ header {
 .navbar ul li a {
     text-decoration: none;
     font-size: 1.2em;
-    color: #0078d4;
     padding: 5px 10px;
     transition: color 0.3s ease, background-color 0.3s ease;
+    color: #000 !important; /* Schwarze Farbe für Menü-Items */
 }
 
 .navbar ul li a:hover {
-    background-color: #0078d4;
+    background-color: grey;
     color: white;
     border-radius: 5px;
 }
@@ -109,4 +111,3 @@ main {
     padding: 20px;
     justify-content: center;
 }
-
