@@ -1,0 +1,29 @@
+/* Footer */
+footer {
+    padding: 20px;
+    text-align: center;
+    border-top: 1px solid black;
+}
+
+footer ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 10px 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+footer ul li {
+    display: inline;
+}
+
+footer ul li a {
+    text-decoration: none; /* Textdekoration entfernen */
+    color: #c7c7c7; /* Schwarze Farbe für Links im Footer */
+}
+
+footer p {
+    margin: 0;
+    color: #c7c7c7;
+}

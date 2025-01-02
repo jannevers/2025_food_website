@@ -1,6 +1,6 @@
 /* Allgemeine Einstellungen */
 * {
-    max-width: 1000px;
+    max-width: 1200px;
     align-items: center;    /* Zentrieren der Elemente */
     justify-content: center; /* Vertikal in der Mitte */
     margin: auto;
@@ -18,11 +18,35 @@ header {
     flex-direction: column; /* Elemente untereinander anordnen */
     align-items: center;    /* Zentrieren der Elemente */
     justify-content: center; /* Vertikal in der Mitte */
+    background-color: transparent; /* Hintergrundfarbe entfernen */
     padding: 20px;
-    border-bottom: 1px solid #00000080;
+    border-top: 1px solid #000; /* Dünner horizontaler Strich oben */
+    border-bottom: 1px solid #000; /* Dünner horizontaler Strich unten */
 }
 
 /* Logo/Titel */
+.site-title {
+    position: relative;
+}
+
+.logo {
+    max-width: 500px;
+}
+
+.logo-small {
+    display: none;
+}
+
+@media (max-width: 600px) {
+    .logo {
+        display: none;
+    }
+    .logo-small {
+        display: block;
+        max-width: 80px;
+    }
+}
+
 .site-title h1 {
     font-size: 2.5em;
     color: #333;
@@ -38,16 +62,7 @@ header {
 
 .navbar ul li a {
     text-decoration: none;
-    font-size: 1.2em;
-    padding: 5px 10px;
-    transition: color 0.3s ease, background-color 0.3s ease;
-    color: #000 !important; /* Schwarze Farbe für Menü-Items */
-}
-
-.navbar ul li a:hover {
-    background-color: grey;
-    color: white;
-    border-radius: 5px;
+    color: #000; /* Schwarze Farbe für Menü-Items */
 }
 
 /* Menüsymbol */

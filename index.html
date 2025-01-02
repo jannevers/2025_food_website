@@ -6,20 +6,22 @@
     <title>Food Website</title>
     <link rel="stylesheet" href="css-styles/main-style.css">
     <link rel="stylesheet" href="css-styles/recipe.css">
+    <link rel="stylesheet" href="css-styles/footer.css"> <!-- Stelle sicher, dass footer.css eingebunden ist -->
 </head>
 <body>
 
     <!-- Header mit Logo und Navigation -->
     <header>
-        <!-- Logo (oder Titel) -->
+        <!-- Logo -->
         <div class="site-title">
-            <h1>Mein Foodblog</h1>
+            <img src="res/logo.gif" alt="Foodblog Logo" class="logo">
+            <img src="res/logo_small.gif" alt="Foodblog Logo Small" class="logo-small">
         </div>
 
         <!-- Navigation -->
         <nav class="navbar">
             <ul>
-                <li><a href="#">Home</a></li>
+                <li><a href="#" onclick="loadContent('src/recipes.html')">Home</a></li>
                 <li><a href="#">Rezepte</a></li>
                 <li><a href="#">Über mich</a></li>
                 <li><a href="#">Kontakt</a></li>
@@ -36,21 +38,37 @@
         <div id="recipes-container"></div>
     </main>
 
+    <footer>
+        <ul>
+            <li><a href="#" onclick="loadContent('src/Impressum.html')">Impressum</a></li>
+            <li><a href="#" onclick="loadContent('src/datenschutz.html')">Datenschutz</a></li>
+            <li><a href="#">Kontakt</a></li>
+        </ul>
+        <p>&copy; 2025 Jannik Evers. Alle Rechte vorbehalten.</p>
+    </footer>
+
     <script>
-        // JavaScript to load the recipes.html content
-        fetch('src/recipes.html')
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.text();
-            })
-            .then(data => {
-                document.getElementById('recipes-container').innerHTML = data;
-            })
-            .catch(error => {
-                console.error('There was a problem with the fetch operation:', error);
-            });
+        // JavaScript to load the content dynamically
+        function loadContent(url) {
+            fetch(url)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.text();
+                })
+                .then(data => {
+                    document.getElementById('recipes-container').innerHTML = data;
+                })
+                .catch(error => {
+                    console.error('There was a problem with the fetch operation:', error);
+                });
+        }
+
+        // Load the default content (recipes.html) on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            loadContent('src/recipes.html');
+        });
     </script>
 </body>
 </html>
