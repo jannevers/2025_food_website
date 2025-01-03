@@ -136,6 +136,11 @@
             });
         }
 
+        // Toggle navigation menu on mobile
+        document.querySelector('.menu-toggle').addEventListener('click', () => {
+            document.querySelector('.navbar ul').classList.toggle('show');
+        });
+
         // Load the default content (recipes.html) on page load
         document.addEventListener('DOMContentLoaded', () => {
             loadContent('src/recipes.html');
