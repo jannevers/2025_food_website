@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Redirecting...</title>
+    <script>
+        // Pfad wird von der URL extrahiert
+        const redirectPath = window.location.pathname;
+
+        // Weiterleitung zur index.html und Beibehalten des Pfads
+        window.location.replace("/index.html#" + redirectPath);
+    </script>
+</head>
+<body>
+    Redirecting...
+</body>
+</html>
