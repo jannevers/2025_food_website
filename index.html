@@ -6,7 +6,7 @@
     <title>Food Website</title>
     <link rel="stylesheet" href="css-styles/main-style.css">
     <link rel="stylesheet" href="css-styles/recipe.css">
-    <link rel="stylesheet" href="css-styles/footer.css"> <!-- Stelle sicher, dass footer.css eingebunden ist -->
+    <link rel="stylesheet" href="css-styles/footer.css">
 </head>
 <body>
 
@@ -159,7 +159,7 @@
 
         // Handle browser navigation
         window.addEventListener('popstate', () => {
-            const path = window.location.pathname;
+            const path = window.location.hash.substring(1);
             if (path === '/impressum') {
                 loadContent('src/Impressum.html', null);
             } else if (path === '/datenschutz') {
@@ -176,7 +176,7 @@
 
         // Load the default content based on the current URL
         document.addEventListener('DOMContentLoaded', () => {
-            const path = window.location.pathname;
+            const path = window.location.hash.substring(1);
             if (path === '/impressum') {
                 loadContent('src/Impressum.html', null);
             } else if (path === '/datenschutz') {

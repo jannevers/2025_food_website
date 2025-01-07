@@ -1,14 +1,21 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Redirecting...</title>
     <script>
         // Pfad wird von der URL extrahiert
         const redirectPath = window.location.pathname;
 
         // Weiterleitung zur index.html und Beibehalten des Pfads
-        window.location.replace("/index.html#" + redirectPath);
+        if (redirectPath === '/impressum') {
+            window.location.replace("/index.html#/impressum");
+        } else if (redirectPath === '/datenschutz') {
+            window.location.replace("/index.html#/datenschutz");
+        } else {
+            window.location.replace("/index.html#" + redirectPath);
+        }
     </script>
 </head>
 <body>
