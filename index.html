@@ -77,12 +77,13 @@
                     return response.text();
                 })
                 .then(data => {
-                    document.querySelector('main').innerHTML = data;
+                    document.querySelector('#recipes-container').innerHTML = data;
                     if (path) {
-                        history.pushState(null, null, path);
+                        history.pushState({ url: url }, null, path);
                     }
                     if (url === 'src/recipes.html') {
-                        populateFilters();
+                        // Warte, bis der Inhalt geladen ist, bevor populateFilters aufgerufen wird
+                        setTimeout(populateFilters, 0);
                     }
                 })
                 .catch(error => {
@@ -91,9 +92,14 @@
         }
 
         function populateFilters() {
-            const recipes = document.querySelectorAll('.recipe');
             const mealTimeSelect = document.getElementById('meal-time');
             const categorySelect = document.getElementById('category');
+            if (!mealTimeSelect || !categorySelect) {
+                console.error('Filter elements not found');
+                return;
+            }
+
+            const recipes = document.querySelectorAll('.recipe');
             const searchInput = document.getElementById('search');
             const mealTimes = new Set();
             const categories = new Set();
@@ -158,14 +164,18 @@
         }
 
         // Handle browser navigation
-        window.addEventListener('popstate', () => {
-            const path = window.location.hash.substring(1);
-            if (path === '/impressum') {
-                loadContent('src/Impressum.html', null);
-            } else if (path === '/datenschutz') {
-                loadContent('src/datenschutz.html', null);
+        window.addEventListener('popstate', (event) => {
+            if (event.state && event.state.url) {
+                loadContent(event.state.url, null);
             } else {
-                loadContent('src/recipes.html', null);
+                const path = window.location.hash.substring(1);
+                if (path === '/impressum') {
+                    loadContent('src/Impressum.html', null);
+                } else if (path === '/datenschutz') {
+                    loadContent('src/datenschutz.html', null);
+                } else {
+                    loadContent('src/recipes.html', null);
+                }
             }
         });
 
