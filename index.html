@@ -21,7 +21,7 @@
         <!-- Navigation -->
         <nav class="navbar">
             <ul>
-                <li><a href="#" onclick="loadContent('src/recipes.html')">Home</a></li>
+                <li><a href="#" onclick="loadContent('src/recipes.html', '/'); return false;">Home</a></li>
                 <li><a href="#">Rezepte</a></li>
                 <li><a href="#">Über mich</a></li>
                 <li><a href="#">Kontakt</a></li>
@@ -59,8 +59,8 @@
 
     <footer>
         <ul>
-            <li><a href="#" onclick="loadContent('src/Impressum.html')">Impressum</a></li>
-            <li><a href="#" onclick="loadContent('src/datenschutz.html')">Datenschutz</a></li>
+            <li><a href="/impressum" onclick="loadContent('src/Impressum.html', '/impressum'); return false;">Impressum</a></li>
+            <li><a href="/datenschutz" onclick="loadContent('src/datenschutz.html', '/datenschutz'); return false;">Datenschutz</a></li>
             <li><a href="#">Kontakt</a></li>
         </ul>
         <p>&copy; 2025 Jannik Evers. Alle Rechte vorbehalten.</p>
@@ -68,7 +68,7 @@
 
     <script>
         // JavaScript to load the content dynamically
-        function loadContent(url) {
+        function loadContent(url, path) {
             fetch(url)
                 .then(response => {
                     if (!response.ok) {
@@ -77,8 +77,13 @@
                     return response.text();
                 })
                 .then(data => {
-                    document.getElementById('recipes-container').innerHTML = data;
-                    populateFilters();
+                    document.querySelector('main').innerHTML = data;
+                    if (path) {
+                        history.pushState(null, null, path);
+                    }
+                    if (url === 'src/recipes.html') {
+                        populateFilters();
+                    }
                 })
                 .catch(error => {
                     console.error('There was a problem with the fetch operation:', error);
@@ -136,14 +141,49 @@
             });
         }
 
+        function loadRecipeDetail(url) {
+            fetch(url)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.text();
+                })
+                .then(data => {
+                    document.querySelector('main').innerHTML = data;
+                })
+                .catch(error => {
+                    console.error('There was a problem with the fetch operation:', error);
+                });
+        }
+
+        // Handle browser navigation
+        window.addEventListener('popstate', () => {
+            const path = window.location.pathname;
+            if (path === '/impressum') {
+                loadContent('src/Impressum.html', null);
+            } else if (path === '/datenschutz') {
+                loadContent('src/datenschutz.html', null);
+            } else {
+                loadContent('src/recipes.html', null);
+            }
+        });
+
         // Toggle navigation menu on mobile
         document.querySelector('.menu-toggle').addEventListener('click', () => {
             document.querySelector('.navbar ul').classList.toggle('show');
         });
 
-        // Load the default content (recipes.html) on page load
+        // Load the default content based on the current URL
         document.addEventListener('DOMContentLoaded', () => {
-            loadContent('src/recipes.html');
+            const path = window.location.pathname;
+            if (path === '/impressum') {
+                loadContent('src/Impressum.html', null);
+            } else if (path === '/datenschutz') {
+                loadContent('src/datenschutz.html', null);
+            } else {
+                loadContent('src/recipes.html', '/');
+            }
         });
     </script>
 </body>

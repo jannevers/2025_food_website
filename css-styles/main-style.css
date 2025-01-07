@@ -10,6 +10,12 @@
 
 body {
     font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column; /* Elemente untereinander anordnen */
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
 }
 
 /* Header */
@@ -121,7 +127,7 @@ header {
 /* Hauptbereich für Rezepte */
 main {
     display: flex;
-    flex-direction: column;
+    flex-direction: column; /* Elemente untereinander anordnen */
     align-items: center;
     gap: 20px;
     padding: 20px;
